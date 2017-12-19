@@ -1,5 +1,8 @@
+import javafx.scene.shape.Line;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.Line2D;
 
 public class View extends JPanel {
 
@@ -7,9 +10,24 @@ public class View extends JPanel {
     private JPanel historyPanel;
     private JButton subdivideButton;
 
-    public View() {
+    public View(ViewController viewController) {
         super();
-        this.graphicsPanel = new JPanel();
+        this.graphicsPanel = new JPanel() {
+            @Override
+            public void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Graphics2D g2 = (Graphics2D) g;
+                RenderingHints rh = new RenderingHints(
+                        RenderingHints.KEY_ANTIALIASING,
+                        RenderingHints.VALUE_ANTIALIAS_ON);
+                g2.setRenderingHints(rh);
+
+                // TODO: for all Points drae a line between each pair
+
+                Line2D lin = new Line2D.Float(100, 100, 250, 260);
+                g2.draw(lin);
+            }
+        };
         this.historyPanel = new JPanel();
         this.subdivideButton = new JButton("Subdivide");
 
@@ -25,5 +43,4 @@ public class View extends JPanel {
         this.add(historyPanel);
         this.add(subdivideButton);
     }
-
 }
