@@ -2,6 +2,7 @@ import javafx.scene.shape.Line;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.awt.geom.Line2D;
 
 public class View extends JPanel {
@@ -22,10 +23,22 @@ public class View extends JPanel {
                         RenderingHints.VALUE_ANTIALIAS_ON);
                 g2.setRenderingHints(rh);
 
-                // TODO: for all Points drae a line between each pair
+                Model2D model2D = Model2D.getInstance();
+                model2D.addPoints(FileReader.readIn());
 
-                Line2D lin = new Line2D.Float(100, 100, 250, 260);
-                g2.draw(lin);
+                int fakt = 4;
+
+                Point[] points = model2D.getCurrentInstance();
+                for (int i = 0; i < points.length; i++) {
+                    Point one = points[i];
+                    Point two;
+                    if (i == points.length - 1)
+                        two = points[0];
+                    else
+                        two = points[i+1];
+                    Line2D lin = new Line2D.Float(one.getX()*fakt, one.getY()*fakt*(-1) + this.getHeight(), two.getX()*fakt, two.getY()*fakt*(-1) + this.getHeight());
+                    g2.draw(lin);
+                }
             }
         };
         this.historyPanel = new JPanel();
@@ -42,5 +55,7 @@ public class View extends JPanel {
         this.add(graphicsPanel);
         this.add(historyPanel);
         this.add(subdivideButton);
+
+        this.subdivideButton.addMouseListener(viewController.getSubdivideListener());
     }
 }
