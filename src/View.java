@@ -39,7 +39,7 @@ public class View extends JPanel implements Observer {
                         two = points[0];
                     else
                         two = points[i+1];
-                    Line2D lin = new Line2D.Float(one.getX()*fakt, one.getY()*fakt*(-1) + this.getHeight(), two.getX()*fakt, two.getY()*fakt*(-1) + this.getHeight());
+                    Line2D lin = new Line2D.Float((int)one.getX()*fakt, (int)one.getY()*fakt*(-1) + this.getHeight(), (int)two.getX()*fakt, (int)two.getY()*fakt*(-1) + this.getHeight());
                     g2.draw(lin);
                 }
             }

@@ -43,19 +43,19 @@ public class Model2D extends Observable {
         for(int i = 0; i < Model2D.getInstance().getCurrentInstance().length; i++) {
             newInstance[i * 2] = Model2D.getInstance().getCurrentInstance()[i].clone();
             if(i == Model2D.getInstance().getCurrentInstance().length - 1) {
-                int newX = (Model2D.getInstance().getCurrentInstance()[i].getX() + Model2D.getInstance().getCurrentInstance()[0].getX()) / 2;
-                int newY = (Model2D.getInstance().getCurrentInstance()[i].getY() + Model2D.getInstance().getCurrentInstance()[0].getY()) / 2;
+                double newX = (Model2D.getInstance().getCurrentInstance()[i].getX() + Model2D.getInstance().getCurrentInstance()[0].getX()) / 2;
+                double newY = (Model2D.getInstance().getCurrentInstance()[i].getY() + Model2D.getInstance().getCurrentInstance()[0].getY()) / 2;
                 newInstance[i * 2 + 1] = new Point(newX, newY);
             } else {
-                int newX = (Model2D.getInstance().getCurrentInstance()[i].getX() + Model2D.getInstance().getCurrentInstance()[i + 1].getX()) / 2;
-                int newY = (Model2D.getInstance().getCurrentInstance()[i].getY() + Model2D.getInstance().getCurrentInstance()[i + 1].getY()) / 2;
+                double newX = (Model2D.getInstance().getCurrentInstance()[i].getX() + Model2D.getInstance().getCurrentInstance()[i + 1].getX()) / 2;
+                double newY = (Model2D.getInstance().getCurrentInstance()[i].getY() + Model2D.getInstance().getCurrentInstance()[i + 1].getY()) / 2;
                 newInstance[i * 2 + 1] = new Point(newX, newY);
             }
         }
-        int tmpX = newInstance[0].getX();
-        int tmpY = newInstance[0].getY();
+        double tmpX = newInstance[0].getX();
+        double tmpY = newInstance[0].getY();
         for(int i = 0; i < newInstance.length; i++) {
-            int newX, newY;
+            double newX, newY;
             if(i == newInstance.length - 1) {
                 newX = (newInstance[i].getX() + tmpX) / 2;
                 newY = (newInstance[i].getY() + tmpY) / 2;
