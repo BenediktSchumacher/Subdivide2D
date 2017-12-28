@@ -11,7 +11,7 @@ public class ViewController {
         return new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                // TODO
+                Model2D.getInstance().cornerCutting();
             }
 
             @Override
@@ -35,5 +35,4 @@ public class ViewController {
             }
         };
     }
-
 }

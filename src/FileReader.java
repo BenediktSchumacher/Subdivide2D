@@ -1,7 +1,7 @@
 public class FileReader {
 
     public static Point[] readIn() {
-        Point[] points = {
+        /*Point[] points = {
             new Point(10, 80),
                 new Point(20 ,95),
                 new Point(37 ,52),
@@ -13,6 +13,12 @@ public class FileReader {
                 new Point(76 ,10),
                 new Point(55 ,27),
                 new Point(19 ,10),
+        };*/
+        Point[] points = {
+          new Point(10, 10),
+          new Point(10, 80),
+          new Point(80, 80),
+          new Point(80, 10)
         };
         return points;
     }

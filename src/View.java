@@ -4,8 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.geom.Line2D;
+import java.util.Observable;
+import java.util.Observer;
 
-public class View extends JPanel {
+public class View extends JPanel implements Observer {
 
     private JPanel graphicsPanel;
     private JPanel historyPanel;
@@ -13,6 +15,10 @@ public class View extends JPanel {
 
     public View(ViewController viewController) {
         super();
+
+        Model2D model2D = Model2D.getInstance();
+        model2D.addPoints(FileReader.readIn());
+
         this.graphicsPanel = new JPanel() {
             @Override
             public void paintComponent(Graphics g) {
@@ -22,9 +28,6 @@ public class View extends JPanel {
                         RenderingHints.KEY_ANTIALIASING,
                         RenderingHints.VALUE_ANTIALIAS_ON);
                 g2.setRenderingHints(rh);
-
-                Model2D model2D = Model2D.getInstance();
-                model2D.addPoints(FileReader.readIn());
 
                 int fakt = 4;
 
@@ -57,5 +60,12 @@ public class View extends JPanel {
         this.add(subdivideButton);
 
         this.subdivideButton.addMouseListener(viewController.getSubdivideListener());
+        Model2D.getInstance().addObserver(this);
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        this.revalidate();
+        this.repaint();
     }
 }
