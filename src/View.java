@@ -85,13 +85,10 @@ public class View extends JPanel implements Observer {
     }
 
     private void refreshHistory() {
-        //if (this.historyPanel.getListSelectionListeners().length > 0)
-          //  this.historyPanel.removeListSelectionListener(this.historyPanel.getListSelectionListeners()[0]);
         ((DefaultListModel)this.historyPanel.getModel()).removeAllElements();
         for (String descr : Model2D.getInstance().getDescriptions())
             ((DefaultListModel)this.historyPanel.getModel()).addElement(descr);
         this.historyPanel.setSelectedIndex(((DefaultListModel)this.historyPanel.getModel()).size() - 1);
-        //this.historyPanel.addListSelectionListener(this.viewController.getListSelectionListener());
     }
 
     public String getCurrentAlgorithm() {

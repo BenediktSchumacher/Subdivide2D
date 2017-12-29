@@ -16,21 +16,10 @@ public class ViewController {
         this.view = view;
     }
 
-    public ListSelectionListener getListSelectionListener() {
-        return new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                System.out.println(((JList)e.getSource()).getSelectedIndex());
-                //
-            }
-        };
-    }
-
     public MouseListener getListListener() {
         return new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println(((JList)e.getSource()).getSelectedIndex());
                 Model2D.getInstance().resetToInsance(((JList)e.getSource()).getSelectedIndex());
             }
 
