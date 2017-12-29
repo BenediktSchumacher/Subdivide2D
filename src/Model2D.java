@@ -11,11 +11,13 @@ import java.util.Observer;
 public class Model2D extends Observable {
 
     private ArrayList<Point[]> models;
+    private ArrayList<String> descriptions;
     private static Model2D model2D;
     private int current;
 
     private Model2D() {
         models = new ArrayList();
+        descriptions = new ArrayList();
         current = -1;
     }
 
@@ -33,9 +35,23 @@ public class Model2D extends Observable {
         return models.get(current);
     }
 
-    public void addPoints(Point[] points) {
+    public ArrayList<String> getDescriptions() { return this.descriptions; }
+
+    public void addPoints(Point[] points, String descr) {
         models.add(points);
+        descriptions.add(descr);
         current = models.size() - 1;
+    }
+
+    public void resetToInsance(int index) {
+        current = index;
+        while (models.size() > index + 1) {
+            models.remove(index + 1);
+            descriptions.remove(index + 1);
+        }
+        assert(models.size() == index + 1);
+        setChanged();
+        notifyObservers();
     }
 
     public void cornerCutting() {
@@ -66,7 +82,7 @@ public class Model2D extends Observable {
             newInstance[i].setX(newX);
             newInstance[i].setY(newY);
         }
-        addPoints(newInstance);
+        addPoints(newInstance, "Corner-Cutting");
         setChanged();
         notifyObservers();
         // System.out.println(this.toString());
