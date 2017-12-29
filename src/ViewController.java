@@ -1,6 +1,4 @@
 import javax.swing.*;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -51,7 +49,7 @@ public class ViewController {
             public void mouseClicked(MouseEvent e) {
                 switch (view.getCurrentAlgorithm()) {
                     case "Corner-Cutting":
-                        Model2D.getInstance().cornerCutting();
+                        Algorithms.cornerCutting();
                         break;
                     default:
                         break;
