@@ -67,6 +67,7 @@ public class View extends JPanel implements Observer {
 
         // TODO: better handling here
         algorithmBox.addItem("Corner-Cutting");
+        algorithmBox.addItem("4-Point");
 
         this.graphicsPanel.setPreferredSize(new Dimension(800, 600));
         this.graphicsPanel.setVisible(true);

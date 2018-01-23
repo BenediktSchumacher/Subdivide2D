@@ -51,6 +51,9 @@ public class ViewController {
                     case "Corner-Cutting":
                         Algorithms.cornerCutting();
                         break;
+                    case "4-Point":
+                        Algorithms.fourPoint(1/16);
+                        break;
                     default:
                         break;
                 }
